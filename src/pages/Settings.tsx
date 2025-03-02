@@ -6,10 +6,11 @@ import SettingItem from '../components/common/SettingItem';
 import Title from '../components/common/Title';
 import SettingCard from '../components/common/SettingCard';
 import Button from '../components/common/Button';
-import { HABITS_MOCK } from '../mocks/habits';
+import { useHabitStore } from '../store/store';
 
 const SettingsPage: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const { habits, removeHabit } = useHabitStore();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedHabits, setSelectedHabits] = useState<string[]>([]);
 
@@ -31,23 +32,20 @@ const SettingsPage: React.FC = () => {
             title="Tema"
             description="Cambia entre modo claro y oscuro"
           >
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-md bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-            >
+            <Button onClick={toggleTheme} appearance="secondary">
               {theme === 'dark' ? (
                 <Sun size={20} className="text-amber-500" />
               ) : (
                 <Moon size={20} className="text-indigo-600" />
               )}
-            </button>
+            </Button>
           </SettingItem>
         </SettingCard>
 
         {/* Gestión de hábitos */}
 
         <SettingCard title="Gestión de hábitos">
-          {HABITS_MOCK.length === 0 ? (
+          {habits.length === 0 ? (
             <p className="text-gray-500 dark:text-gray-400">
               No hay hábitos para gestionar.
             </p>
@@ -60,7 +58,7 @@ const SettingsPage: React.FC = () => {
                 />
 
                 <div className="space-y-2 max-h-60 overflow-y-auto mt-4">
-                  {HABITS_MOCK.map((habit) => (
+                  {habits.map((habit) => (
                     <div
                       key={habit.id}
                       className="flex items-center p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -93,7 +91,14 @@ const SettingsPage: React.FC = () => {
                       >
                         Cancelar
                       </Button>
-                      <Button onClick={() => {}} appearance="danger">
+                      <Button
+                        onClick={() => {
+                          selectedHabits.map(removeHabit);
+                          setShowConfirmation(false);
+                          setSelectedHabits([]);
+                        }}
+                        appearance="danger"
+                      >
                         <Trash2 size={16} className="mr-2" />
                         Confirmar eliminación
                       </Button>
@@ -122,7 +127,7 @@ const SettingsPage: React.FC = () => {
             <Button
               appearance="primary"
               onClick={() => {
-                const dataStr = JSON.stringify(HABITS_MOCK, null, 2);
+                const dataStr = JSON.stringify(habits, null, 2);
                 const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(
                   dataStr
                 )}`;
