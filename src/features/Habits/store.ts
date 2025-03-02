@@ -7,11 +7,13 @@ interface HabitState {
   addHabit: (
     habit: Omit<HabitInterface, 'id' | 'createdAt' | 'completedDates'>
   ) => void;
+  updateHabit: (updatedHabit: HabitInterface) => void;
   toggleCompletion: (habitId: string, date: string) => void;
   removeHabit: (habitId: string) => void;
+  getHabit: (habitId: string) => HabitInterface | undefined;
 }
 
-export const useHabitStore = create<HabitState>((set) => ({
+export const useHabitStore = create<HabitState>((set, get) => ({
   habits: HABITS_MOCK,
   addHabit: (habit) =>
     set((state) => ({
@@ -49,8 +51,6 @@ export const useHabitStore = create<HabitState>((set) => ({
     set((state) => ({
       habits: state.habits.filter((habit) => habit.id !== habitId)
     })),
-  getHabit: (habitId: string) => {
-    const state = useHabitStore.getState();
-    return state.habits.find((habit) => habit.id === habitId);
-  }
+  getHabit: (habitId: string) =>
+    get().habits.find((habit) => habit.id === habitId)
 }));
