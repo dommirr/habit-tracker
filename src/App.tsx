@@ -1,20 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AddHabit from './pages/AddHabit';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import Settings from './pages/Settings';
-import Stats from './pages/Stats';
-import EditHabit from './pages/EditHabit';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
+
+import Habits from './features/Habits/Habits';
+import Stats from './features/Stats/Stats';
+import Settings from './features/Settings/Settings';
+import NotFound from './features/Habits/pages/NotFound';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add" element={<AddHabit />} />
-        <Route path="/edit/:id" element={<EditHabit />} />
-        <Route path="/stats" element={<Stats />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/habits/*" element={<Habits />} />
+        <Route path="/stats/*" element={<Stats />} />
+        <Route path="/settings/*" element={<Settings />} />
+        <Route path="/" element={<Navigate to="/habits" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

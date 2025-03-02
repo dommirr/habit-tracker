@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { HabitInterface } from '../types';
-import { HABITS_MOCK } from '../mocks/habits';
+import { HABITS_MOCK } from '@/features/Habits/data/habits';
+import { HabitInterface } from '@/features/Habits/types';
 
 interface HabitState {
   habits: HabitInterface[];
@@ -12,6 +12,13 @@ interface HabitState {
 export const useHabitStore = create<HabitState>((set) => ({
   habits: HABITS_MOCK,
   addHabit: (habit) => set((state) => ({ habits: [...state.habits, habit] })),
+  updateHabit: (updatedHabit: HabitInterface) => {
+    set((state) => ({
+      habits: state.habits.map((habit) =>
+        habit.id === updatedHabit.id ? updatedHabit : habit
+      )
+    }));
+  },
   toggleCompletion: (habitId, date) =>
     set((state) => ({
       habits: state.habits.map((habit) =>
@@ -28,5 +35,9 @@ export const useHabitStore = create<HabitState>((set) => ({
   removeHabit: (habitId) =>
     set((state) => ({
       habits: state.habits.filter((habit) => habit.id !== habitId)
-    }))
+    })),
+  getHabit: (habitId: string) => {
+    const state = useHabitStore.getState();
+    return state.habits.find((habit) => habit.id === habitId);
+  }
 }));

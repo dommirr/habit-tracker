@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Moon, Sun, Save, Trash2 } from 'lucide-react';
-import Layout from '../components/Layout';
-import { useTheme } from '../hooks/useTheme';
-import SettingItem from '../components/common/SettingItem';
-import Title from '../components/common/Title';
-import SettingCard from '../components/common/SettingCard';
-import Button from '../components/common/Button';
-import { useHabitStore } from '../store/store';
+import { Moon, Save, Sun, Trash2 } from 'lucide-react';
+import { useTheme } from '@/hooks/useTheme';
+import { useHabitStore } from '@/features/Habits/store';
+import Layout from '@/components/Layout/Layout';
+import SettingItem from '@/components/common/SettingItem';
+import SettingCard from '@/components/common/SettingCard';
+import Button from '@/components/common/Button';
+import Title from '@/components/common/Title';
 
 const SettingsPage: React.FC = () => {
   const { theme, toggleTheme } = useTheme();

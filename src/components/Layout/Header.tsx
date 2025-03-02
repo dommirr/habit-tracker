@@ -2,8 +2,8 @@ import { Home, PlusCircle, BarChart2, Settings, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const navItems = [
-  { path: '/', icon: <Home size={20} />, label: 'Inicio' },
-  { path: '/add', icon: <PlusCircle size={20} />, label: 'Agregar' },
+  { path: '/habits', icon: <Home size={20} />, label: 'Inicio' },
+  { path: '/habits/add', icon: <PlusCircle size={20} />, label: 'Agregar' },
   { path: '/stats', icon: <BarChart2 size={20} />, label: 'Estadísticas' },
   { path: '/settings', icon: <Settings size={20} />, label: 'Configuración' }
 ];

@@ -1,5 +1,4 @@
-import Layout from '../components/Layout';
-
+import Layout from '@/components/Layout/Layout';
 const AddHabit = () => {
   return (
     <Layout>
