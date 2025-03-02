@@ -1,15 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import AddHabit from '@/features/Habits/pages/AddHabit';
-import Home from '@/features/Habits/pages/Home';
-import EditHabit from '@/features/Habits/pages/EditHabit';
-import NotFound from '@/features/Habits/pages/NotFound';
+import AddHabitPage from '@/features/Habits/pages/AddHabitPage';
+import HomePage from '@/features/Habits/pages/HomePage';
+import EditHabitPage from '@/features/Habits/pages/EditHabitPage';
+import NotFoundPage from '@/features/Habits/pages/NotFoundPage';
+
 function Habits() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/add" element={<AddHabit />} />
-      <Route path="/:id" element={<EditHabit />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/add" element={<AddHabitPage />} />
+      <Route path="/:id" element={<EditHabitPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

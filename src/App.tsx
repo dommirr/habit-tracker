@@ -8,7 +8,7 @@ import {
 import Habits from './features/Habits/Habits';
 import Stats from './features/Stats/Stats';
 import Settings from './features/Settings/Settings';
-import NotFound from './features/Habits/pages/NotFound';
+import NotFound from './features/Habits/pages/NotFoundPage';
 
 function App() {
   return (

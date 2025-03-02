@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout/Layout';
-const AddHabit = () => {
+
+const AddHabitPage = () => {
   return (
     <Layout>
       <h1>Agregar Nuevo Hábito</h1>
@@ -7,4 +8,4 @@ const AddHabit = () => {
   );
 };
 
-export default AddHabit;
+export default AddHabitPage;

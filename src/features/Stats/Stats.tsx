@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import StatsPage from './pages/StatsPage';
-import NotFound from '@/features/Habits/pages/NotFound';
+import NotFound from '@/features/Habits/pages/NotFoundPage';
 
 function Stats() {
   return (
