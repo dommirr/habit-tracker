@@ -1,10 +1,10 @@
-import React from 'react';
+import Layout from '../components/Layout';
 
 const Stats = () => {
   return (
-    <div>
+    <Layout>
       <h1>Estadísticas</h1>
-    </div>
+    </Layout>
   );
 };
 

@@ -5,7 +5,6 @@ import NotFound from './pages/NotFound';
 import Settings from './pages/Settings';
 import Stats from './pages/Stats';
 import EditHabit from './pages/EditHabit';
-import './App.css';
 
 function App() {
   return (

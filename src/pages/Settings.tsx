@@ -1,10 +1,10 @@
-import React from 'react';
+import Layout from '../components/Layout';
 
 const Settings = () => {
   return (
-    <div>
+    <Layout>
       <h1>Configuración</h1>
-    </div>
+    </Layout>
   );
 };
 

@@ -1,10 +1,10 @@
-import React from 'react';
+import Layout from '../components/Layout';
 
 const AddHabit = () => {
   return (
-    <div>
+    <Layout>
       <h1>Agregar Nuevo Hábito</h1>
-    </div>
+    </Layout>
   );
 };
 
