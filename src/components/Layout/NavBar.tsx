@@ -8,7 +8,7 @@ const navItems = [
   { path: '/settings', icon: <Settings size={20} />, label: 'Configuración' }
 ];
 
-function NavBar({ onItemClick }: { onItemClick: () => void }) {
+const NavBar = ({ onItemClick }: { onItemClick: () => void }) => {
   const location = useLocation();
 
   return (
@@ -32,6 +32,6 @@ function NavBar({ onItemClick }: { onItemClick: () => void }) {
       </nav>
     </div>
   );
-}
+};
 
 export default NavBar;

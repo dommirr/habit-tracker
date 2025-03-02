@@ -1,11 +1,150 @@
+import React, { useState } from 'react';
+import { Moon, Sun, Save, Trash2 } from 'lucide-react';
 import Layout from '../components/Layout';
+import { useTheme } from '../hooks/useTheme';
+import SettingItem from '../components/common/SettingItem';
+import Title from '../components/common/Title';
+import SettingCard from '../components/common/SettingCard';
+import Button from '../components/common/Button';
+import { HABITS_MOCK } from '../mocks/habits';
 
-const Settings = () => {
+const SettingsPage: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [selectedHabits, setSelectedHabits] = useState<string[]>([]);
+
+  const handleToggleHabit = (id: string) => {
+    setSelectedHabits((prev) =>
+      prev.includes(id)
+        ? prev.filter((habitId) => habitId !== id)
+        : [...prev, id]
+    );
+  };
+
   return (
     <Layout>
-      <h1>Configuración</h1>
+      <Title title="Configuración" />
+      <div className="space-y-6">
+        {/* Tema */}
+        <SettingCard title="Apariencia">
+          <SettingItem
+            title="Tema"
+            description="Cambia entre modo claro y oscuro"
+          >
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-md bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            >
+              {theme === 'dark' ? (
+                <Sun size={20} className="text-amber-500" />
+              ) : (
+                <Moon size={20} className="text-indigo-600" />
+              )}
+            </button>
+          </SettingItem>
+        </SettingCard>
+
+        {/* Gestión de hábitos */}
+
+        <SettingCard title="Gestión de hábitos">
+          {HABITS_MOCK.length === 0 ? (
+            <p className="text-gray-500 dark:text-gray-400">
+              No hay hábitos para gestionar.
+            </p>
+          ) : (
+            <>
+              <div className="mb-4">
+                <SettingItem
+                  title="Selecciona los hábitos"
+                  description="Selecciona los hábitos que deseas eliminar"
+                />
+
+                <div className="space-y-2 max-h-60 overflow-y-auto mt-4">
+                  {HABITS_MOCK.map((habit) => (
+                    <div
+                      key={habit.id}
+                      className="flex items-center p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <input
+                        type="checkbox"
+                        id={`habit-${habit.id}`}
+                        checked={selectedHabits.includes(habit.id)}
+                        onChange={() => handleToggleHabit(habit.id)}
+                        className="mr-3 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                      />
+                      <label
+                        htmlFor={`habit-${habit.id}`}
+                        className="flex-grow cursor-pointer"
+                      >
+                        {habit.name}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {selectedHabits.length > 0 && (
+                <div className="flex justify-end">
+                  {showConfirmation ? (
+                    <div className="flex space-x-2">
+                      <Button
+                        onClick={() => setShowConfirmation(false)}
+                        appearance="secondary"
+                      >
+                        Cancelar
+                      </Button>
+                      <Button onClick={() => {}} appearance="danger">
+                        <Trash2 size={16} className="mr-2" />
+                        Confirmar eliminación
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={() => setShowConfirmation(true)}
+                      appearance="danger"
+                    >
+                      <Trash2 size={16} className="mr-2" />
+                      Eliminar seleccionados ({selectedHabits.length})
+                    </Button>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+        </SettingCard>
+
+        {/* Exportar datos */}
+        <SettingCard title="Datos">
+          <SettingItem
+            title="Exportar datos"
+            description="Descarga tus hábitos en formato JSON"
+          >
+            <Button
+              appearance="primary"
+              onClick={() => {
+                const dataStr = JSON.stringify(HABITS_MOCK, null, 2);
+                const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(
+                  dataStr
+                )}`;
+
+                const exportFileDefaultName = `habit-tracker-data-${
+                  new Date().toISOString().split('T')[0]
+                }.json`;
+
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileDefaultName);
+                linkElement.click();
+              }}
+            >
+              <Save size={16} className="mr-2" />
+              Exportar
+            </Button>
+          </SettingItem>
+        </SettingCard>
+      </div>
     </Layout>
   );
 };
 
-export default Settings;
+export default SettingsPage;

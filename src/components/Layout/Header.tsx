@@ -8,13 +8,12 @@ const navItems = [
   { path: '/settings', icon: <Settings size={20} />, label: 'Configuración' }
 ];
 
-function Header({
-  isMenuOpen,
-  toggleMenu
-}: {
+interface HeaderProps {
   isMenuOpen: boolean;
   toggleMenu: () => void;
-}) {
+}
+
+const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
   return (
     <header className="bg-white dark:bg-gray-800 shadow-sm">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -51,6 +50,6 @@ function Header({
       </div>
     </header>
   );
-}
+};
 
 export default Header;
