@@ -4,14 +4,27 @@ import { HabitInterface } from '@/features/Habits/types';
 
 interface HabitState {
   habits: HabitInterface[];
-  addHabit: (habit: HabitInterface) => void;
+  addHabit: (
+    habit: Omit<HabitInterface, 'id' | 'createdAt' | 'completedDates'>
+  ) => void;
   toggleCompletion: (habitId: string, date: string) => void;
   removeHabit: (habitId: string) => void;
 }
 
 export const useHabitStore = create<HabitState>((set) => ({
   habits: HABITS_MOCK,
-  addHabit: (habit) => set((state) => ({ habits: [...state.habits, habit] })),
+  addHabit: (habit) =>
+    set((state) => ({
+      habits: [
+        ...state.habits,
+        {
+          ...habit,
+          id: crypto.randomUUID(),
+          createdAt: new Date().toISOString(),
+          completedDates: []
+        }
+      ]
+    })),
   updateHabit: (updatedHabit: HabitInterface) => {
     set((state) => ({
       habits: state.habits.map((habit) =>
