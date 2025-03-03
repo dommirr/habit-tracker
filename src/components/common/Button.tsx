@@ -14,7 +14,7 @@ const buttonClasses = {
 
 const Button: React.FC<ButtonProps> = ({ children, appearance, ...props }) => {
   return (
-    <button className={buttonClasses[appearance]} {...props}>
+    <button className={buttonClasses[appearance] + ' cursor-pointer'} {...props}>
       {children}
     </button>
   );

@@ -8,7 +8,8 @@ interface HabitCardProps {
 }
 
 const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
-  const { toggleCompletion, removeHabit } = useHabitStore();
+  const  toggleCompletion = useHabitStore(state => state.toggleCompletion);
+  const removeHabit = useHabitStore(state => state.removeHabit);
   const today = new Date().toISOString().split('T')[0];
   const isCompletedToday = habit.completedDates.includes(today);
 

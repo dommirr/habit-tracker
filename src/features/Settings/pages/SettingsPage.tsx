@@ -3,14 +3,15 @@ import { Moon, Save, Sun, Trash2 } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
 import { useHabitStore } from '@/features/Habits/store';
 import Layout from '@/components/Layout/Layout';
-import SettingItem from '@/components/common/SettingItem';
-import SettingCard from '@/components/common/SettingCard';
+import SettingItem from '@/features/Settings/components/SettingItem';
+import SettingCard from '@/features/Settings/components/SettingCard';
 import Button from '@/components/common/Button';
 import Title from '@/components/common/Title';
 
 const SettingsPage: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
-  const { habits, removeHabit } = useHabitStore();
+  const habits = useHabitStore(state => state.habits);
+  const removeHabit = useHabitStore(state => state.removeHabit);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedHabits, setSelectedHabits] = useState<string[]>([]);
 

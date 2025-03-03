@@ -6,7 +6,7 @@ import EmptyState from '../components/EmptyState';
 import { useHabitStore } from '../store';
 
 const HomePage: React.FC = () => {
-  const { habits } = useHabitStore();
+  const habits = useHabitStore(state => state.habits);
 
   return (
     <Layout>

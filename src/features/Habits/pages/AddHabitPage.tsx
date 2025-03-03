@@ -4,7 +4,7 @@ import { useHabitStore } from '../store';
 import { HabitInterface } from '../types';
 
 const AddHabitPage = () => {
-  const { addHabit } = useHabitStore();
+  const addHabit = useHabitStore(state => state.addHabit);
   const handleSubmit = (
     habitData: Omit<HabitInterface, 'id' | 'createdAt' | 'completedDates'>
   ) => {
