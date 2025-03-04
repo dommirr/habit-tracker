@@ -1,28 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { HabitInterface } from '../../types';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { DropletOff } from "lucide-react";
+import { HabitInterface } from "../../types";
+import { useNavigate } from "react-router-dom";
+import Button from "@/components/common/Button";
 
 interface HabitFormProps {
   initialData?: HabitInterface;
   onSubmit: (
-    habitData: Omit<HabitInterface, 'id' | 'createdAt' | 'completedDates'>
+    habitData: Omit<HabitInterface, "id" | "createdAt" | "completedDates">
   ) => void;
   isEditing?: boolean;
 }
 
+const colorOptions = [
+  { value: "bg-[var(--color-blue)]", label: "Azul Pastel" },
+  { value: "bg-[var(--color-pink)]", label: "Rosa Suave" },
+  { value: "bg-[var(--color-green)]", label: "Verde Menta" },
+  { value: "bg-[var(--color-yellow)]", label: "Dorado Pastel" },
+  { value: "bg-[var(--color-red)]", label: "Rojo Coral" },
+  { value: "bg-[var(--color-purple)]", label: "Lavanda" },
+  { value: "bg-[var(--color-cyan)]", label: "Cian Pastel" },
+  { value: "bg-[var(--color-orange)]", label: "Durazno Suave" },
+  { value: "bg-[var(--color-gray)]", label: "Gris Neutro" },
+  { value: "bg-[var(--color-teal)]", label: "Verde Azulado" },
+  { value: "bg-[var(--color-slate-blue)]", label: "Azul Grisáceo" },
+  { value: "bg-transparent", label: "Transparente" },
+];
+
 const HabitForm: React.FC<HabitFormProps> = ({
   initialData,
   onSubmit,
-  isEditing = false
+  isEditing = false,
 }) => {
   const [formData, setFormData] = useState<
-    Omit<HabitInterface, 'id' | 'createdAt' | 'completedDates'>
+    Omit<HabitInterface, "id" | "createdAt" | "completedDates">
   >({
-    name: '',
-    description: '',
-    frequency: 'daily',
-    timeOfDay: 'anytime',
-    color: 'bg-indigo-100 dark:bg-indigo-900'
+    name: "",
+    description: "",
+    frequency: "daily",
+    timeOfDay: "anytime",
+    color: "bg-indigo-100 dark:bg-indigo-900",
   });
   const navigate = useNavigate();
 
@@ -47,25 +64,14 @@ const HabitForm: React.FC<HabitFormProps> = ({
     e.preventDefault();
     onSubmit(formData);
     setFormData({
-      name: '',
-      description: '',
-      frequency: 'daily',
-      timeOfDay: 'anytime',
-      color: 'bg-indigo-100 dark:bg-indigo-900'
+      name: "",
+      description: "",
+      frequency: "daily",
+      timeOfDay: "anytime",
+      color: "bg-indigo-100 dark:bg-indigo-900",
     });
-    navigate('/habits');
+    navigate("/habits");
   };
-
-  const colorOptions = [
-    { value: 'bg-indigo-100 dark:bg-indigo-900', label: 'Índigo' },
-    { value: 'bg-emerald-100 dark:bg-emerald-900', label: 'Esmeralda' },
-    { value: 'bg-amber-100 dark:bg-amber-900', label: 'Ámbar' },
-    { value: 'bg-sky-100 dark:bg-sky-900', label: 'Cielo' },
-    { value: 'bg-rose-100 dark:bg-rose-900', label: 'Rosa' },
-    { value: 'bg-violet-100 dark:bg-violet-900', label: 'Violeta' },
-    { value: 'bg-teal-100 dark:bg-teal-900', label: 'Verde azulado' },
-    { value: 'bg-orange-100 dark:bg-orange-900', label: 'Naranja' }
-  ];
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -80,7 +86,7 @@ const HabitForm: React.FC<HabitFormProps> = ({
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           placeholder="Ej: Meditar, Leer, Ejercicio..."
         />
       </div>
@@ -95,7 +101,7 @@ const HabitForm: React.FC<HabitFormProps> = ({
           value={formData.description}
           onChange={handleChange}
           rows={3}
-          className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-4 py-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           placeholder="Describe tu hábito..."
         />
       </div>
@@ -110,7 +116,7 @@ const HabitForm: React.FC<HabitFormProps> = ({
             name="frequency"
             value={formData.frequency}
             onChange={handleChange}
-            className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           >
             <option value="daily">Diario</option>
             <option value="weekly">Semanal</option>
@@ -127,7 +133,7 @@ const HabitForm: React.FC<HabitFormProps> = ({
             name="timeOfDay"
             value={formData.timeOfDay}
             onChange={handleChange}
-            className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           >
             <option value="morning">Mañana</option>
             <option value="afternoon">Tarde</option>
@@ -139,32 +145,37 @@ const HabitForm: React.FC<HabitFormProps> = ({
 
       <div>
         <label className="block text-sm font-medium mb-2">Color</label>
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-6 gap-2">
           {colorOptions.map((color) => (
             <div
               key={color.value}
-              className={`cursor-pointer rounded-md p-4 border-2 transition-all ${
+              className={`flex justify-center cursor-pointer rounded-md p-4 border-2 transition-all ${
                 formData.color === color.value
-                  ? 'border-indigo-500 dark:border-indigo-400 shadow-md'
-                  : 'border-transparent hover:border-gray-300 dark:hover:border-gray-600'
+                  ? "border-[var(--color-primary)] shadow-md"
+                  : "border-[var(--color-border)]"
               } ${color.value}`}
               onClick={() =>
                 setFormData((prev) => ({ ...prev, color: color.value }))
               }
             >
               <span className="sr-only">{color.label}</span>
+              {color.value === "bg-transparent" ? (
+                <DropletOff
+                  size={16}
+                  className="text-[var(--color-text-primary)]"
+                />
+              ) : (
+                <div className="w-4 h-4 rounded-full" />
+              )}
             </div>
           ))}
         </div>
       </div>
 
       <div className="flex justify-end">
-        <button
-          type="submit"
-          className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        >
-          {isEditing ? 'Actualizar hábito' : 'Crear hábito'}
-        </button>
+        <Button type="submit">
+          {isEditing ? "Actualizar hábito" : "Crear hábito"}
+        </Button>
       </div>
     </form>
   );

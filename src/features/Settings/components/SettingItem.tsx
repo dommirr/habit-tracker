@@ -7,13 +7,15 @@ interface SettingItemProps {
 const SettingItem: React.FC<SettingItemProps> = ({
   title,
   description,
-  children
+  children,
 }) => {
   return (
     <div className="flex items-center justify-between py-4">
       <div>
-        <p className="font-medium">{title}</p>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
+        <p className="font-medium text-[var(--color-text-primary)] transition-colors">
+          {title}
+        </p>
+        <p className="text-sm text-[var(--color-text-secondary)] transition-colors">
           {description}
         </p>
       </div>

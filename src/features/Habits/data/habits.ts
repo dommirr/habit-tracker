@@ -7,7 +7,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     description: 'Meditar durante 10 minutos',
     frequency: 'daily',
     timeOfDay: 'morning',
-    color: 'bg-indigo-100 dark:bg-indigo-900',
+    color: 'bg-[var(--color-purple)]',
     createdAt: '2023-01-01',
     completedDates: ['2023-04-01', '2023-04-02', '2023-04-03']
   },
@@ -17,7 +17,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     description: 'Hacer 30 minutos de ejercicio',
     frequency: 'daily',
     timeOfDay: 'afternoon',
-    color: 'bg-emerald-100 dark:bg-emerald-900',
+    color: 'bg-[var(--color-green)]',
     createdAt: '2023-01-15',
     completedDates: ['2023-04-01', '2023-04-03']
   },
@@ -27,7 +27,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     description: 'Leer un libro durante 20 minutos',
     frequency: 'daily',
     timeOfDay: 'evening',
-    color: 'bg-amber-100 dark:bg-amber-900',
+    color: 'bg-[var(--color-yellow)]',
     createdAt: '2023-02-01',
     completedDates: ['2023-04-02']
   },
@@ -37,7 +37,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     description: 'Beber 2 litros de agua',
     frequency: 'daily',
     timeOfDay: 'anytime',
-    color: 'bg-sky-100 dark:bg-sky-900',
+    color: 'bg-[var(--color-blue)]',
     createdAt: '2023-02-15',
     completedDates: ['2023-04-01', '2023-04-02', '2023-04-03']
   },
@@ -47,7 +47,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     description: 'Llamar a mis padres',
     frequency: 'weekly',
     timeOfDay: 'evening',
-    color: 'bg-rose-100 dark:bg-rose-900',
+    color: 'bg-[var(--color-red)]',
     createdAt: '2023-03-01',
     completedDates: ['2023-04-02']
   }

@@ -10,4 +10,78 @@
 :root {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Base theme colors */
+  --color-background: #F1F5F9;
+  /* Light gray background for main content */
+  --color-surface: #FFFFFF;
+  /* Pure white for cards and elevated surfaces */
+  --color-text-primary: #1E293B;
+  /* Dark slate for primary text */
+  --color-text-secondary: #64748B;
+  /* Medium gray for secondary text */
+  --color-primary: #3B82F6;
+  /* Bright blue for primary actions */
+  --color-secondary: #EC4899;
+  /* Pink for secondary actions */
+  --color-success: #22C55E;
+  /* Green for success states */
+  --color-warning: #FACC15;
+  /* Yellow for warnings */
+  --color-error: #EF4444;
+  /* Red for errors */
+  --color-border: #E2E8F0;
+  /* Light gray for borders */
+
+  /* Card theme colors */
+  --color-white: #F1F5F9;
+  /* Light gray white for text contrast */
+  --color-blue: #2563EB;
+  /* Royal blue for emphasis */
+  --color-pink: #BE185D;
+  /* Deep pink for feminine touch */
+  --color-green: #15803D;
+  /* Forest green for nature/growth */
+  --color-yellow: #CA8A04;
+  /* Golden yellow for attention */
+  --color-red: #B91C1C;
+  /* Ruby red for importance */
+  --color-purple: #7C3AED;
+  /* Rich purple for luxury */
+  --color-cyan: #0E7490;
+  /* Ocean blue for calm */
+  --color-orange: #D97706;
+  /* Burnt orange for energy */
+  --color-gray: #6B7280;
+  /* Neutral gray for balance */
+  --color-teal: #0F766E;
+  /* Deep teal for sophistication */
+  --color-slate-blue: #6D5B98;
+  /* Muted purple for subtlety */
+  --color-transparent: transparent;
+  /* Transparent for overlays */
+}
+
+.dark {
+  /* Dark theme colors */
+  --color-background: #1B1F29;
+  /* Deep navy for dark background */
+  --color-surface: #252A36;
+  /* Slightly lighter navy for surfaces */
+  --color-text-primary: #E2E8F0;
+  /* Light gray for primary text */
+  --color-text-secondary: #A5B1C2;
+  /* Muted gray for secondary text */
+  --color-primary: #60A5FA;
+  /* Lighter blue for dark mode */
+  --color-secondary: #F472B6;
+  /* Softer pink for dark mode */
+  --color-success: #4ADE80;
+  /* Brighter green for visibility */
+  --color-warning: #FDE047;
+  /* Bright yellow for dark mode */
+  --color-error: #FB7185;
+  /* Soft red for dark mode */
+  --color-border: #3E4C5F;
+  /* Dark gray for borders */
 }

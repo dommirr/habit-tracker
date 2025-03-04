@@ -1,22 +1,43 @@
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  appearance: 'primary' | 'secondary' | 'danger';
-}
+import { ComponentProps, ElementType } from "react";
+
+type ButtonBaseProps = {
+  as?: ElementType;
+  to?: string;
+  appearance?: "primary" | "secondary" | "danger";
+  children?: React.ReactNode;
+};
+
+type ButtonProps<T extends ElementType> = ButtonBaseProps &
+  Omit<ComponentProps<T>, keyof ButtonBaseProps>;
 
 const buttonClasses = {
   primary:
-    'px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md transition-colors flex items-center',
+    "px-4 py-2 bg-[var(--color-primary)] hover:bg-[var(--color-blue)] text-[var(--color-white)] rounded-md transition-colors flex items-center",
   secondary:
-    'px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors',
+    "px-4 py-2 bg-[var(--color-secondary)] border border-[var(--color-border)] rounded-md hover:bg-[var(--color-pink)] transition-colors",
   danger:
-    'px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors flex items-center'
+    "px-4 py-2 bg-[var(--color-error)] hover:bg-[var(--color-red)] text-[var(--color-white)] rounded-md transition-colors flex items-center",
 };
 
-const Button: React.FC<ButtonProps> = ({ children, appearance, ...props }) => {
+const Button = <T extends ElementType = "button">({
+  as,
+  appearance = "primary",
+  children,
+  to,
+  ...props
+}: ButtonProps<T>) => {
+  const Component = as || "button";
+
   return (
-    <button className={buttonClasses[appearance] + ' cursor-pointer'} {...props}>
+    <Component
+      className={
+        buttonClasses[appearance] + " cursor-pointer text-[var(--color-white)]"
+      }
+      {...props}
+      to={to}
+    >
       {children}
-    </button>
+    </Component>
   );
 };
 

@@ -1,43 +1,43 @@
-import { Link } from 'react-router-dom';
-import { Edit, Trash2, CheckCircle } from 'lucide-react';
-import { HabitInterface } from '../types';
-import { useHabitStore } from '../store';
+import { Link } from "react-router-dom";
+import { Edit, Trash2, CheckCircle } from "lucide-react";
+import { HabitInterface } from "../types";
+import { useHabitStore } from "../store";
 
 interface HabitCardProps {
   habit: HabitInterface;
 }
 
 const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
-  const  toggleCompletion = useHabitStore(state => state.toggleCompletion);
-  const removeHabit = useHabitStore(state => state.removeHabit);
-  const today = new Date().toISOString().split('T')[0];
+  const toggleCompletion = useHabitStore((state) => state.toggleCompletion);
+  const removeHabit = useHabitStore((state) => state.removeHabit);
+  const today = new Date().toISOString().split("T")[0];
   const isCompletedToday = habit.completedDates.includes(today);
 
   const getFrequencyText = (frequency: string) => {
     switch (frequency) {
-      case 'daily':
-        return 'Diario';
-      case 'weekly':
-        return 'Semanal';
-      case 'monthly':
-        return 'Mensual';
+      case "daily":
+        return "Diario";
+      case "weekly":
+        return "Semanal";
+      case "monthly":
+        return "Mensual";
       default:
         return frequency;
     }
   };
 
   const getTimeOfDayText = (timeOfDay?: string) => {
-    if (!timeOfDay) return '';
+    if (!timeOfDay) return "";
 
     switch (timeOfDay) {
-      case 'morning':
-        return 'Mañana';
-      case 'afternoon':
-        return 'Tarde';
-      case 'evening':
-        return 'Noche';
-      case 'anytime':
-        return 'Cualquier momento';
+      case "morning":
+        return "Mañana";
+      case "afternoon":
+        return "Tarde";
+      case "evening":
+        return "Noche";
+      case "anytime":
+        return "Cualquier momento";
       default:
         return timeOfDay;
     }
@@ -46,7 +46,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
   const handleDelete = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (window.confirm('¿Estás seguro de que quieres eliminar este hábito?')) {
+    if (window.confirm("¿Estás seguro de que quieres eliminar este hábito?")) {
       removeHabit(habit.id);
     }
   };
@@ -67,29 +67,29 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
           <div className="flex space-x-1">
             <button
               onClick={handleComplete}
-              className={`p-1.5 rounded-full transition-colors ${
+              className={`p-1.5 rounded-full transition-colors cursor-pointer ${
                 isCompletedToday
-                  ? 'bg-green-500 text-white hover:bg-green-600'
-                  : 'bg-white/80 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  ? "bg-[var(--color-success)] text-[var(--color-text-primary)] hover:bg-[var(--color-success)]"
+                  : "bg-[var(--color-background)] text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
               }`}
               title={
                 isCompletedToday
-                  ? 'Marcar como no completado'
-                  : 'Marcar como completado'
+                  ? "Marcar como no completado"
+                  : "Marcar como completado"
               }
             >
               <CheckCircle size={18} />
             </button>
             <Link
               to={`/habits/${habit.id}`}
-              className="p-1.5 rounded-full bg-white/80 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="p-1.5 cursor-pointer rounded-full bg-[var(--color-background)]  text-[var(--color-text-primary)] hover:bg-[var(--color-surface)] transition-colors"
               title="Editar hábito"
             >
               <Edit size={18} />
             </Link>
             <button
               onClick={handleDelete}
-              className="p-1.5 rounded-full bg-white/80 dark:bg-gray-700 hover:bg-red-100 dark:hover:bg-red-900/50 text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors"
+              className="p-1.5 cursor-pointer rounded-full bg-[var(--color-background)]  text-[var(--color-text-primary)] hover:bg-[var(--color-error)] transition-colors"
               title="Eliminar hábito"
             >
               <Trash2 size={18} />
@@ -113,9 +113,11 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
 
       <div
         className={`h-2 ${
-          isCompletedToday ? 'bg-green-500' : 'bg-gray-300 dark:bg-gray-600'
+          isCompletedToday
+            ? "bg-[var(--color-success)]"
+            : "bg-[var(--color-surface)]"
         }`}
-      ></div>
+      />
     </div>
   );
 };
