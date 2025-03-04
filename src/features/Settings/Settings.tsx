@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router-dom";
-import SettingsPage from "./pages/SettingsPage";
-import NotFound from "@/features/Habits/pages/NotFoundPage";
+import { Routes, Route } from 'react-router-dom';
+import SettingsPage from './pages/SettingsPage';
+import NotFound from '@/features/Habits/pages/NotFoundPage';
 
 function Settings() {
   return (

@@ -9,7 +9,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     timeOfDay: 'morning',
     color: 'bg-[var(--color-purple)]',
     createdAt: '2023-01-01',
-    completedDates: ['2023-04-01', '2023-04-02', '2023-04-03']
+    completedDates: ['2023-04-01', '2023-04-02', '2023-04-03'],
   },
   {
     id: '2',
@@ -19,7 +19,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     timeOfDay: 'afternoon',
     color: 'bg-[var(--color-green)]',
     createdAt: '2023-01-15',
-    completedDates: ['2023-04-01', '2023-04-03']
+    completedDates: ['2023-04-01', '2023-04-03'],
   },
   {
     id: '3',
@@ -29,7 +29,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     timeOfDay: 'evening',
     color: 'bg-[var(--color-yellow)]',
     createdAt: '2023-02-01',
-    completedDates: ['2023-04-02']
+    completedDates: ['2023-04-02'],
   },
   {
     id: '4',
@@ -39,7 +39,7 @@ export const HABITS_MOCK: HabitInterface[] = [
     timeOfDay: 'anytime',
     color: 'bg-[var(--color-blue)]',
     createdAt: '2023-02-15',
-    completedDates: ['2023-04-01', '2023-04-02', '2023-04-03']
+    completedDates: ['2023-04-01', '2023-04-02', '2023-04-03'],
   },
   {
     id: '5',
@@ -49,6 +49,6 @@ export const HABITS_MOCK: HabitInterface[] = [
     timeOfDay: 'evening',
     color: 'bg-[var(--color-red)]',
     createdAt: '2023-03-01',
-    completedDates: ['2023-04-02']
-  }
+    completedDates: ['2023-04-02'],
+  },
 ];

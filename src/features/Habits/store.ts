@@ -23,15 +23,15 @@ export const useHabitStore = create<HabitState>((set, get) => ({
           ...habit,
           id: crypto.randomUUID(),
           createdAt: new Date().toISOString(),
-          completedDates: []
-        }
-      ]
+          completedDates: [],
+        },
+      ],
     })),
   updateHabit: (updatedHabit: HabitInterface) => {
     set((state) => ({
       habits: state.habits.map((habit) =>
         habit.id === updatedHabit.id ? updatedHabit : habit
-      )
+      ),
     }));
   },
   toggleCompletion: (habitId, date) =>
@@ -42,15 +42,15 @@ export const useHabitStore = create<HabitState>((set, get) => ({
               ...habit,
               completedDates: habit.completedDates.includes(date)
                 ? habit.completedDates.filter((d) => d !== date)
-                : [...habit.completedDates, date]
+                : [...habit.completedDates, date],
             }
           : habit
-      )
+      ),
     })),
   removeHabit: (habitId) =>
     set((state) => ({
-      habits: state.habits.filter((habit) => habit.id !== habitId)
+      habits: state.habits.filter((habit) => habit.id !== habitId),
     })),
   getHabit: (habitId: string) =>
-    get().habits.find((habit) => habit.id === habitId)
+    get().habits.find((habit) => habit.id === habitId),
 }));

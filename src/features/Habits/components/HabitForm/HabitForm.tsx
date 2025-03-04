@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { DropletOff } from "lucide-react";
-import { HabitInterface } from "../../types";
-import { useNavigate } from "react-router-dom";
-import Button from "@/components/common/Button";
+import React, { useState, useEffect } from 'react';
+import { DropletOff } from 'lucide-react';
+import { HabitInterface } from '../../types';
+import { useNavigate } from 'react-router-dom';
+import Button from '@/components/common/Button';
 
 interface HabitFormProps {
   initialData?: HabitInterface;
   onSubmit: (
-    habitData: Omit<HabitInterface, "id" | "createdAt" | "completedDates">
+    habitData: Omit<HabitInterface, 'id' | 'createdAt' | 'completedDates'>
   ) => void;
   isEditing?: boolean;
 }
 
 const colorOptions = [
-  { value: "bg-[var(--color-blue)]", label: "Azul Pastel" },
-  { value: "bg-[var(--color-pink)]", label: "Rosa Suave" },
-  { value: "bg-[var(--color-green)]", label: "Verde Menta" },
-  { value: "bg-[var(--color-yellow)]", label: "Dorado Pastel" },
-  { value: "bg-[var(--color-red)]", label: "Rojo Coral" },
-  { value: "bg-[var(--color-purple)]", label: "Lavanda" },
-  { value: "bg-[var(--color-cyan)]", label: "Cian Pastel" },
-  { value: "bg-[var(--color-orange)]", label: "Durazno Suave" },
-  { value: "bg-[var(--color-gray)]", label: "Gris Neutro" },
-  { value: "bg-[var(--color-teal)]", label: "Verde Azulado" },
-  { value: "bg-[var(--color-slate-blue)]", label: "Azul Grisáceo" },
-  { value: "bg-transparent", label: "Transparente" },
+  { value: 'bg-[var(--color-blue)]', label: 'Azul Pastel' },
+  { value: 'bg-[var(--color-pink)]', label: 'Rosa Suave' },
+  { value: 'bg-[var(--color-green)]', label: 'Verde Menta' },
+  { value: 'bg-[var(--color-yellow)]', label: 'Dorado Pastel' },
+  { value: 'bg-[var(--color-red)]', label: 'Rojo Coral' },
+  { value: 'bg-[var(--color-purple)]', label: 'Lavanda' },
+  { value: 'bg-[var(--color-cyan)]', label: 'Cian Pastel' },
+  { value: 'bg-[var(--color-orange)]', label: 'Durazno Suave' },
+  { value: 'bg-[var(--color-gray)]', label: 'Gris Neutro' },
+  { value: 'bg-[var(--color-teal)]', label: 'Verde Azulado' },
+  { value: 'bg-[var(--color-slate-blue)]', label: 'Azul Grisáceo' },
+  { value: 'bg-transparent', label: 'Transparente' },
 ];
 
 const HabitForm: React.FC<HabitFormProps> = ({
@@ -33,13 +33,13 @@ const HabitForm: React.FC<HabitFormProps> = ({
   isEditing = false,
 }) => {
   const [formData, setFormData] = useState<
-    Omit<HabitInterface, "id" | "createdAt" | "completedDates">
+    Omit<HabitInterface, 'id' | 'createdAt' | 'completedDates'>
   >({
-    name: "",
-    description: "",
-    frequency: "daily",
-    timeOfDay: "anytime",
-    color: "bg-indigo-100 dark:bg-indigo-900",
+    name: '',
+    description: '',
+    frequency: 'daily',
+    timeOfDay: 'anytime',
+    color: 'bg-indigo-100 dark:bg-indigo-900',
   });
   const navigate = useNavigate();
 
@@ -64,13 +64,13 @@ const HabitForm: React.FC<HabitFormProps> = ({
     e.preventDefault();
     onSubmit(formData);
     setFormData({
-      name: "",
-      description: "",
-      frequency: "daily",
-      timeOfDay: "anytime",
-      color: "bg-indigo-100 dark:bg-indigo-900",
+      name: '',
+      description: '',
+      frequency: 'daily',
+      timeOfDay: 'anytime',
+      color: 'bg-indigo-100 dark:bg-indigo-900',
     });
-    navigate("/habits");
+    navigate('/habits');
   };
 
   return (
@@ -151,15 +151,15 @@ const HabitForm: React.FC<HabitFormProps> = ({
               key={color.value}
               className={`flex justify-center cursor-pointer rounded-md p-4 border-2 transition-all ${
                 formData.color === color.value
-                  ? "border-[var(--color-primary)] shadow-md"
-                  : "border-[var(--color-border)]"
+                  ? 'border-[var(--color-primary)] shadow-md'
+                  : 'border-[var(--color-border)]'
               } ${color.value}`}
               onClick={() =>
                 setFormData((prev) => ({ ...prev, color: color.value }))
               }
             >
               <span className="sr-only">{color.label}</span>
-              {color.value === "bg-transparent" ? (
+              {color.value === 'bg-transparent' ? (
                 <DropletOff
                   size={16}
                   className="text-[var(--color-text-primary)]"
@@ -174,7 +174,7 @@ const HabitForm: React.FC<HabitFormProps> = ({
 
       <div className="flex justify-end">
         <Button type="submit">
-          {isEditing ? "Actualizar hábito" : "Crear hábito"}
+          {isEditing ? 'Actualizar hábito' : 'Crear hábito'}
         </Button>
       </div>
     </form>

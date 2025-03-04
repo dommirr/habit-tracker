@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { Edit, Trash2, CheckCircle } from "lucide-react";
-import { HabitInterface } from "../types";
-import { useHabitStore } from "../store";
+import { Link } from 'react-router-dom';
+import { Edit, Trash2, CheckCircle } from 'lucide-react';
+import { HabitInterface } from '../types';
+import { useHabitStore } from '../store';
 
 interface HabitCardProps {
   habit: HabitInterface;
@@ -10,34 +10,34 @@ interface HabitCardProps {
 const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
   const toggleCompletion = useHabitStore((state) => state.toggleCompletion);
   const removeHabit = useHabitStore((state) => state.removeHabit);
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split('T')[0];
   const isCompletedToday = habit.completedDates.includes(today);
 
   const getFrequencyText = (frequency: string) => {
     switch (frequency) {
-      case "daily":
-        return "Diario";
-      case "weekly":
-        return "Semanal";
-      case "monthly":
-        return "Mensual";
+      case 'daily':
+        return 'Diario';
+      case 'weekly':
+        return 'Semanal';
+      case 'monthly':
+        return 'Mensual';
       default:
         return frequency;
     }
   };
 
   const getTimeOfDayText = (timeOfDay?: string) => {
-    if (!timeOfDay) return "";
+    if (!timeOfDay) return '';
 
     switch (timeOfDay) {
-      case "morning":
-        return "Mañana";
-      case "afternoon":
-        return "Tarde";
-      case "evening":
-        return "Noche";
-      case "anytime":
-        return "Cualquier momento";
+      case 'morning':
+        return 'Mañana';
+      case 'afternoon':
+        return 'Tarde';
+      case 'evening':
+        return 'Noche';
+      case 'anytime':
+        return 'Cualquier momento';
       default:
         return timeOfDay;
     }
@@ -46,7 +46,7 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
   const handleDelete = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (window.confirm("¿Estás seguro de que quieres eliminar este hábito?")) {
+    if (window.confirm('¿Estás seguro de que quieres eliminar este hábito?')) {
       removeHabit(habit.id);
     }
   };
@@ -69,13 +69,13 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
               onClick={handleComplete}
               className={`p-1.5 rounded-full transition-colors cursor-pointer ${
                 isCompletedToday
-                  ? "bg-[var(--color-success)] text-[var(--color-text-primary)] hover:bg-[var(--color-success)]"
-                  : "bg-[var(--color-background)] text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]"
+                  ? 'bg-[var(--color-success)] text-[var(--color-text-primary)] hover:bg-[var(--color-success)]'
+                  : 'bg-[var(--color-background)] text-[var(--color-text-primary)] hover:bg-[var(--color-surface)]'
               }`}
               title={
                 isCompletedToday
-                  ? "Marcar como no completado"
-                  : "Marcar como completado"
+                  ? 'Marcar como no completado'
+                  : 'Marcar como completado'
               }
             >
               <CheckCircle size={18} />
@@ -114,8 +114,8 @@ const HabitCard: React.FC<HabitCardProps> = ({ habit }) => {
       <div
         className={`h-2 ${
           isCompletedToday
-            ? "bg-[var(--color-success)]"
-            : "bg-[var(--color-surface)]"
+            ? 'bg-[var(--color-success)]'
+            : 'bg-[var(--color-surface)]'
         }`}
       />
     </div>

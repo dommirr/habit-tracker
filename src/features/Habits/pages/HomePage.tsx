@@ -1,10 +1,10 @@
-import Layout from "@/components/Layout/Layout";
-import { Link } from "react-router-dom";
-import { PlusCircle } from "lucide-react";
-import HabitCard from "../components/HabitCard";
-import EmptyState from "../components/EmptyState";
-import { useHabitStore } from "../store";
-import Button from "@/components/common/Button";
+import Layout from '@/components/Layout/Layout';
+import { Link } from 'react-router-dom';
+import { PlusCircle } from 'lucide-react';
+import HabitCard from '../components/HabitCard';
+import EmptyState from '../components/EmptyState';
+import { useHabitStore } from '../store';
+import Button from '@/components/common/Button';
 
 const HomePage: React.FC = () => {
   const habits = useHabitStore((state) => state.habits);

@@ -11,15 +11,12 @@ interface EmptyStateProps {
 const EmptyState: React.FC<EmptyStateProps> = ({
   message = 'No hay hábitos para mostrar',
   buttonText = 'Crear nuevo hábito',
-  buttonLink = '/habits/add'
+  buttonLink = '/habits/add',
 }) => {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
       <div className="bg-[var(--color-background)] p-4 rounded-full mb-4">
-        <ClipboardList
-          size={40}
-          className="text-[var(--color-text-primary)]"
-        />
+        <ClipboardList size={40} className="text-[var(--color-text-primary)]" />
       </div>
       <h3 className="text-xl font-medium mb-2">{message}</h3>
       <p className="text-[var(--color-text-primary)] mb-6 max-w-md">

@@ -6,8 +6,8 @@ import { useHabitStore } from '../store';
 
 const EditHabitPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const updateHabit = useHabitStore(state => state.updateHabit);
-  const getHabit = useHabitStore(state => state.getHabit);
+  const updateHabit = useHabitStore((state) => state.updateHabit);
+  const getHabit = useHabitStore((state) => state.getHabit);
   const navigate = useNavigate();
 
   const habit = getHabit(id || '');
@@ -36,7 +36,7 @@ const EditHabitPage: React.FC = () => {
   ) => {
     updateHabit({
       ...habit,
-      ...habitData
+      ...habitData,
     });
     navigate('/');
   };

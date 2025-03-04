@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
+import { useState } from 'react';
+import Header from './Header';
+import Footer from './Footer';
+import NavBar from './NavBar';
 
 interface LayoutProps {
   children: React.ReactNode;

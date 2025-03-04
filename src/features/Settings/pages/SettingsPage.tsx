@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Moon, Save, Sun, Trash2 } from "lucide-react";
-import { useTheme } from "@/hooks/useTheme";
-import { useHabitStore } from "@/features/Habits/store";
-import Layout from "@/components/Layout/Layout";
-import SettingItem from "@/features/Settings/components/SettingItem";
-import SettingCard from "@/features/Settings/components/SettingCard";
-import Button from "@/components/common/Button";
-import Title from "@/components/common/Title";
+import React, { useState } from 'react';
+import { Moon, Save, Sun, Trash2 } from 'lucide-react';
+import { useTheme } from '@/hooks/useTheme';
+import { useHabitStore } from '@/features/Habits/store';
+import Layout from '@/components/Layout/Layout';
+import SettingItem from '@/features/Settings/components/SettingItem';
+import SettingCard from '@/features/Settings/components/SettingCard';
+import Button from '@/components/common/Button';
+import Title from '@/components/common/Title';
 
 const SettingsPage: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -134,12 +134,12 @@ const SettingsPage: React.FC = () => {
                 )}`;
 
                 const exportFileDefaultName = `habit-tracker-data-${
-                  new Date().toISOString().split("T")[0]
+                  new Date().toISOString().split('T')[0]
                 }.json`;
 
-                const linkElement = document.createElement("a");
-                linkElement.setAttribute("href", dataUri);
-                linkElement.setAttribute("download", exportFileDefaultName);
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileDefaultName);
                 linkElement.click();
               }}
             >
